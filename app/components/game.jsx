@@ -4,7 +4,6 @@ import { useState } from "react";
 export const Game = () => {
     const [secim, setSecim] = useState("");
     const [hasWinner, setHasWinner] = useState(false);
-  
     const [result, setResult] = useState(null);
     const choices = ['Taş', 'Kağıt', 'Makas'];
 
@@ -26,6 +25,33 @@ export const Game = () => {
             setHasWinner("Berabere");
         }}
 
+        function handleSecim2() {
+            setSecim("kağıt");
+            makeRandomChoice();
+            if (secim === "kağıt" && result === "taş"){
+                setHasWinner("Kazandınız");
+            }
+            else if (secim === "kağıt" && result === "makas"){
+                setHasWinner("Kaybettiniz");
+            }
+            else if (secim === "kağıt" && result === "kağıt"){
+                setHasWinner("Berabere");
+            }
+        }
+
+        function handleSecim3() {
+            setSecim("makas");
+            makeRandomChoice();
+            if(secim === "makas" && result === "taş"){
+                setHasWinner("Kaybettiniz");
+            }
+            else if (secim === "makas" && result === "kağıt"){
+                setHasWinner("Kazandınız");
+            }
+            else if (secim === "makas" && result === "makas"){
+                setHasWinner("Berabere");
+            }
+        }
         
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
@@ -35,16 +61,16 @@ export const Game = () => {
                 marginTop: "100px",
                 alignItems: "center",
                 justifyContent: "center",
-                }}>,
+                }}>
                 
                 <button style={{width: "80px", height: "40px", border: "2px inset gray", borderRadius: "8px", }}
                 onClick={handleSecim}>taş</button>
 
                 <button style={{width: "80px", height: "40px", border: "2px inset white", borderRadius: "8px",}}
-                onClick={() => {setSecim("kağıt")}}>kağıt</button>
+                onClick={handleSecim2}>kağıt</button>
 
                 <button style={{width: "80px", height: "40px", border: "2px inset green", borderRadius: "8px",}}
-                onClick={() => {setSecim("makas")}}>makas</button>
+                onClick={handleSecim3}>makas</button>
             </div>
              <div style={{
                 display: "flex",
@@ -53,12 +79,18 @@ export const Game = () => {
                 marginTop: "50px",
                 border: "2px inset white",
                 borderRadius: "10px",
-                width: "200px",
+                width: "300px",
                 height: "200px",
+                flexDirection: "column",
+                gap: "20px",
+
                 
              }}>
 
-                <span>kullanıcı:{secim} sistem:{result}</span>
+                <span style={{fontSize: "20px", color: "green"}}>kullanıcı:{secim}</span>
+                <span>----------------------------------------</span>
+                <span style={{fontSize: "20px", color: "red"}}>sistem: {result}</span>
+                <span>----------------------------------------</span>
                 <span>{hasWinner}</span>
                     
             </div>
