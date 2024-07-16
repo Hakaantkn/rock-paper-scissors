@@ -30,7 +30,21 @@ export const Header = () => {
                         borderRadius: "10px",
                        }}>
                     <p style={{color: "black", fontSize: "35px"}}>SCORE</p>
-                    <p style={{color: "black", fontSize: "35px"}}>12</p>
+                    <p style={{color: "black", fontSize: "35px"}}>0</p>
+                </div>
+                <div className="score-board-system" style={{
+                    width: "200px",
+                     height: "200px",
+                      backgroundColor: "white",
+                       alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "30px",
+                        borderRadius: "10px",
+                       }}>
+                    <p style={{color: "black", fontSize: "35px"}}>system score</p>
+                    <p style={{color: "black", fontSize: "35px"}}>0</p>
                 </div>
             </div>
         </>

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Game = () => {
     const [secim, setSecim] = useState("");
@@ -23,7 +23,8 @@ export const Game = () => {
         }
         else if (secim === "taş" && result === "Taş") {
             setHasWinner("Berabere");
-        }}
+        }
+    }
 
         function handleSecim2() {
             setSecim("kağıt");
@@ -46,7 +47,7 @@ export const Game = () => {
                 setHasWinner("Kaybettiniz");
             }
             else if (secim === "makas" && result === "kağıt"){
-                setHasWinner("Kazandınız");
+                setHasWinner("kazandınız");
             }
             else if (secim === "makas" && result === "makas"){
                 setHasWinner("Berabere");
@@ -76,11 +77,11 @@ export const Game = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                marginTop: "50px",
+                marginTop: "30px",
                 border: "2px inset white",
                 borderRadius: "10px",
                 width: "300px",
-                height: "200px",
+                height: "250px",
                 flexDirection: "column",
                 gap: "20px",
 
