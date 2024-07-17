@@ -9,7 +9,7 @@ import { Game } from "./components/game";
 
 export default function Home() {
   return (
-    <div style={{marginInline: "auto" , width: "100vh"}}>
+    <div style={{marginInline: "auto" , width: "100vw"}}>
       <Header/>
       <Game/>
 

@@ -1,7 +1,8 @@
 "use client";
 export const Header = () => {
+    
     return (
-        <>
+        <div style={{display: "flex", justifyContent:"center"}}>
             <div style={{
                 width: "1000px",
                  height: "250px",
@@ -11,7 +12,7 @@ export const Header = () => {
                      alignItems: "center",
                       border: "2px solid white",
                       borderRadius: "10px",
-                      marginTop: "100px"
+
                    }}>
                 <div className="header-text">
                     <h1>ROCK</h1>
@@ -26,10 +27,10 @@ export const Header = () => {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "30px",
+
                         borderRadius: "10px",
                        }}>
-                    <p style={{color: "black", fontSize: "35px"}}>SCORE</p>
+                    <p style={{color: "black", fontSize: "35px"}}>YOUR SCORE</p>
                     <p style={{color: "black", fontSize: "35px"}}>0</p>
                 </div>
                 <div className="score-board-system" style={{
@@ -40,13 +41,13 @@ export const Header = () => {
                         justifyContent: "center",
                         display: "flex",
                         flexDirection: "column",
-                        gap: "30px",
+
                         borderRadius: "10px",
                        }}>
                     <p style={{color: "black", fontSize: "35px"}}>system score</p>
                     <p style={{color: "black", fontSize: "35px"}}>0</p>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
