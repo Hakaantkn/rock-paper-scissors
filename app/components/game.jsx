@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 export const Game = () => {
     const [secim, setSecim] = useState("");
-    const [hasWinner, setHasWinner] = useState(false);
+    const [hasWinner, setHasWinner] = useState("");
     const [result, setResult] = useState("");
     const choices = ['Taş', 'Kağıt', 'Makas'];
 
@@ -37,17 +37,13 @@ export const Game = () => {
             (userChoice === "kağıt" && computurChocie === "taş") ||
             (userChoice === "makas" && computurChocie === "kağıt")
         ) {
-            setHasWinner(true);
+            setHasWinner("kazandın");
         } else {
-            setHasWinner(false);
+            setHasWinner("kaybettin");
         }
     };
 
-    if(setHasWinner === true) {
-        hasWinner = "kazandınız";
-    } else{
-        hasWinner = "kaybettiniz";
-    }
+    
     const handleSecim = (chocie) => {
         setSecim(chocie);
     };
