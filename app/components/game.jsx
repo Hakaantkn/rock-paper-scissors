@@ -4,56 +4,55 @@ import { useState, useEffect } from "react";
 export const Game = () => {
     const [secim, setSecim] = useState("");
     const [hasWinner, setHasWinner] = useState(false);
-    const [result, setResult] = useState(null);
+    const [result, setResult] = useState("");
     const choices = ['Taş', 'Kağıt', 'Makas'];
+
 
     const makeRandomChoice = () => {
         const randomIndex = Math.floor(Math.random() * choices.length);
         setResult(choices[randomIndex]);
     };
 
-    function handleSecim() {
-        setSecim("taş")
-        makeRandomChoice();
-        if (secim === "taş" && result === "Makas") {
-            setHasWinner("Kazandınız");
+    useEffect(() => {
+        if (secim) {
+            const computurChocie = makeRandomChoice();
+
+            const winner = determineWinner(secim, computurChocie);
+            setHasWinner(winner);
+
         }
-        else if (secim === "taş" && result === "Kağıt") {
-            setHasWinner("Kaybettiniz");
+    },[secim]);
+    
+    
+    const determineWinner = (userChoice, computurChocie) => {
+        if(
+            (userChoice === "taş" && computurChocie === "taş") ||
+            (userChoice === "kağıt" && computurChocie === "kağıt") ||
+            (userChoice === "makas" && computurChocie === "makas")
+        ) {
+            hasWinner("berabere");
         }
-        else if (secim === "taş" && result === "Taş") {
-            setHasWinner("Berabere");
+        else if(
+            (userChoice === "taş" && computurChocie === "makas") ||
+            (userChoice === "kağıt" && computurChocie === "taş") ||
+            (userChoice === "makas" && computurChocie === "kağıt")
+        ) {
+            setHasWinner(true);
+        } else {
+            setHasWinner(false);
         }
+    };
+
+    if(setHasWinner === true) {
+        hasWinner = "kazandınız";
+    } else{
+        hasWinner = "kaybettiniz";
     }
-
-        function handleSecim2() {
-            setSecim("kağıt");
-            makeRandomChoice();
-            if (secim === "kağıt" && result === "taş"){
-                setHasWinner("Kazandınız");
-            }
-            else if (secim === "kağıt" && result === "makas"){
-                setHasWinner("Kaybettiniz");
-            }
-            else if (secim === "kağıt" && result === "kağıt"){
-                setHasWinner("Berabere");
-            }
-        }
-
-        function handleSecim3() {
-            setSecim("makas");
-            makeRandomChoice();
-            if(secim === "makas" && result === "taş"){
-                setHasWinner("Kaybettiniz");
-            }
-            else if (secim === "makas" && result === "kağıt"){
-                setHasWinner("kazandınız");
-            }
-            else if (secim === "makas" && result === "makas"){
-                setHasWinner("Berabere");
-            }
-        }
-        
+    const handleSecim = (chocie) => {
+        setSecim(chocie);
+    };
+    console.log(result);
+    console.log(hasWinner);
     return (
         <div style={{display: "flex", flexDirection: "column", alignItems: "center",}}>
             <div style={{
@@ -65,13 +64,13 @@ export const Game = () => {
                 }}>
                 
                 <button style={{width: "80px", height: "40px", border: "2px inset gray", borderRadius: "8px", }}
-                onClick={handleSecim}>taş</button>
+                onClick={() => handleSecim("taş")}>taş</button>
 
                 <button style={{width: "80px", height: "40px", border: "2px inset white", borderRadius: "8px",}}
-                onClick={handleSecim2}>kağıt</button>
+                onClick={() => handleSecim("kağıt")}>kağıt</button>
 
                 <button style={{width: "80px", height: "40px", border: "2px inset green", borderRadius: "8px",}}
-                onClick={handleSecim3}>makas</button>
+                onClick={() => handleSecim("makas")}>makas</button>
             </div>
              <div style={{
                 display: "flex",
